@@ -45,6 +45,71 @@ The infrastructure follows a 3-tier architecture model consisting of:
 3. Database Layer
 
 ---
+## Networking Architecture
+
+One of the areas I spent the most time understanding during this project was AWS networking. Before building the infrastructure, concepts such as VPCs, subnets, route tables, and gateways felt like individual services. Implementing them together helped me understand how traffic moves securely through a cloud environment.
+
+The networking layer was designed to provide:
+
+* Security
+* Scalability
+* Controlled internet access
+* High availability
+
+### Virtual Private Cloud (VPC)
+
+The VPC acts as the foundation of the entire infrastructure. It provides an isolated networking environment where all AWS resources are deployed and managed securely.
+
+### Public Subnets
+
+Public subnets were created for resources that require internet access, such as:
+
+* Application Load Balancer
+* Jenkins Server
+
+Resources deployed in public subnets are able to communicate with the internet through the Internet Gateway.
+
+### Private Subnets
+
+Private subnets were used to host backend resources, including:
+
+* Backend EC2 instances
+* Amazon RDS PostgreSQL
+
+These resources do not require direct internet access, making them more secure. Access to backend resources is restricted to approved services such as the Application Load Balancer.
+
+### Internet Gateway
+
+The Internet Gateway enables communication between resources in public subnets and the internet. Without it, users would be unable to access internet-facing services deployed within the infrastructure.
+
+### NAT Gateway
+
+The NAT Gateway allows resources inside private subnets to access the internet when necessary without exposing them publicly. This is particularly useful when backend servers need to download packages, install updates, or communicate with AWS services securely.
+
+### Route Tables
+
+Route tables were configured to determine how network traffic flows between the different components of the infrastructure.
+
+They are responsible for:
+
+* Routing internet traffic.
+* Managing communication between subnets.
+* Controlling access to the Internet Gateway and NAT Gateway.
+
+### Security Groups
+
+Security Groups act as virtual firewalls for AWS resources. They were configured using the principle of least privilege by allowing only the required traffic.
+
+Examples include:
+
+* Allowing HTTP (Port 80) traffic to the Application Load Balancer.
+* Restricting PostgreSQL (Port 5432) access to backend servers only.
+* Restricting SSH access where necessary.
+* Preventing direct public access to private resources.
+
+### Networking Workflow
+
+Building the networking layer helped me understand that cloud architecture is more than simply launching servers. Proper networking design plays an important role in securing applications, controlling traffic flow, and improving scalability and reliability across the infrastructure.
 
 ## What I Learned
 

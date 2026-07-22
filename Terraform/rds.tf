@@ -65,7 +65,6 @@ resource "aws_db_instance" "postgres" {
 
  username = "postgres"
 
- password = var.db_password
 
  publicly_accessible = false
 

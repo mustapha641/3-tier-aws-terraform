@@ -1,4 +1,4 @@
-variable "db_password" {
+variable "cloudyydb_password" {
 
   description = "Password for the PostgreSQL database"
 

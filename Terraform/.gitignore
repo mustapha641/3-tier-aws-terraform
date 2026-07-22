@@ -1,14 +1,14 @@
+# Terraform state files
+*.tfstate
+*.tfstate.*
+
 # Terraform working directory
 .terraform/
 
-terraform.tfstate
-terraform.tfstate.
+# Terraform variables
 terraform.tfvars
 
-# Terraform crash logs
-crash.log
+# Secrets
 *.pem
 *.key
-
-# Environment files
 .env

@@ -466,7 +466,7 @@ resource "aws_instance" "backend" {
 
               echo "DB_USER=${var.db_username}" >> /etc/environment
 
-              echo "DB_PASSWORD=${var.db_password}" >> /etc/environment
+      
 
 
 

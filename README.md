@@ -109,6 +109,8 @@ Examples include:
 
 ### Networking Workflow
 
+![Networking Architecture](diagrams/networking-layer.png)
+
 Building the networking layer helped me understand that cloud architecture is more than simply launching servers. Proper networking design plays an important role in securing applications, controlling traffic flow, and improving scalability and reliability across the infrastructure.
 
 ## What I Learned
